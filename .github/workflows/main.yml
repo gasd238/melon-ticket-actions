@@ -1,17 +1,20 @@
-name: example
-on:
-  schedule:
-    - cron: '*/5 * * * *' # Every 5 minutes
+name: workflow
+on: push
 jobs:
   job:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Check Tickets
-        uses: gasd238/melon-ticket-actions@v1.1.0
+      - uses: actions/checkout@v1
+      - name: Prepare
+        run: npm ci
+      - name: Lint
+        uses: mooyoul/tslint-actions@master
         with:
           product-id: 209206
           schedule-id: 100001
           seat-id: 1_0
           slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          message: '<@U12345678> 달려달려~'
+          pattern: '*.ts'
+      - name: Build
+        run: npm run build
