@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check Tickets
-        uses: gasd238/melon-ticket-actions
+        uses: gasd238/melon-ticket-actions@1.0.0
         with:
           product-id: 209206
           schedule-id: 100001
