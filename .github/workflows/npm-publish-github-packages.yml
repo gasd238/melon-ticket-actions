@@ -8,10 +8,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check Tickets
-        uses: gasd238/melon-ticket-actions@v1.1.0
+        uses: gasd238/melon-ticket-actions
         with:
           product-id: 209206
           schedule-id: 100001
           seat-id: 1_0
           slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          message: '<@U12345678> 달려달려~'
